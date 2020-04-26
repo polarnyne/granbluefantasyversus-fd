@@ -20,13 +20,13 @@ all_characters = [
     'Belial',]
 
 class Character(object):
-    '''This is the main class for all the characters'''
+    # This is the main class for all the characters
 
     def __init__(self, name):
         self.name = name
         self.movelist = {}
 
-    ''' Using this function, you can insert the frame data manually'''
+    # Using this function, you can insert the frame data manually
     def add_framedata(self, move, damage, guard, startup, active, recovery, on_block, on_hit):
         self.move = move
         self.damage = damage

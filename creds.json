@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "granbluefantasyframedata",
+  "private_key_id": "40b0da51496cd6063005dc1f20cf110c50301f63",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCKzjhMJd5BO9V5\nwZ1BUEdzgeC17ZfxbdLkG6ztIUcO+lFlaLNGOFnpBxW6xk+Eny712VJbb3TWCOo/\nxWoBOaaVGpXWiUHJUdZxE0ckqBWeju30PFoRLnQpihZU9E8GS92hiIzHJc/6cVwR\nw97B8cSbrExgDf2j7vKEP5dVkP6yq6g0fjlaHiuro60FxjiXRZ/a39vsbEKnqWm3\nxGrpujNQWo2Oj/E2p68q9ZCfIxK6Z4P5gXxhUkHmoW/utx8y1HSPLlQobCH0lTBb\nUDpM8a+eiZVptlnOd8PcPSlmXYtvRnd1TJxy6CaPY9fPg5PyeRIJE7B/9h3d3+Zm\nRfWtI68lAgMBAAECggEAA1wDDua/IEWOM/e8mMAHmd/rr1BSvdnHKAgUCwFj7dS4\n0EzbKYJdVk9tvKfZjok0WTUBpWuUAJOJKQxCXBXudlirhgLe60j8uQWUkncyxMDK\n7HJJSY93nMMpXLROaFJ0O//Cma9/pXa4zRSrdfay9NCT+m9d2badOuTeHDvmfWHM\nj7FZnfWCz7ztcW0Sd1fNalZoO1msfCatfXo9bxBAYjcf7it9M/8hQJ9U781jONLJ\nzmWxhNtRONRVkcMK+wDdLutjp/WeHmU71eT8maOei9KnRufBRohCgVCIVkbcot4P\ncWQea7ukDwk1NU9OqfZwy9dBtMIzBl7voRRyVjEwIQKBgQDAHmaJQOQ/mjfgHmck\nErUpksXbXG9S79W/KBl3lgrGsQExSCIGL2vfV4RoRpoMGAwMN4vjQkKABMu+Za7E\nyzsgGcLQqzhBYXIyUlDzjE+iyk5nKM6k2CjwPdcDIN5+yw+SMvXZvo38ZEiOHDYB\n0YR2qa+SOrbDzsJkRchOz6w/xQKBgQC49ayRKlJe2IOmXqIiQiNpqXoUKbW0x6hn\nuc/Pz5eYMFrctS1KfScxiQ6AjUrDWJKtTbBfTxJDL5xp8r7pHuP0OnMtBVI1EGN1\nF93HfqinU+FUuJuxI5s76u1smUcXRdaKMMsLlUPmvYwtkvkAw2KCQyFGsJ/D1/Cd\nnkuyXdBH4QKBgQCKCI2lSeF0rSo+NbnnWiWdtB3CaRx3G2iYyofZuw0NCvoPXYNM\nrF+1/Vxdy3Q9Aj4NvQ8d/mpnLorwxoAWVuqpOrkVUh++IfR5oVkWU5aYIQDJ77Dh\nEYoAan4EemZB9UW/xiuMAfRkBe13ZV+MWOvykiJaTyMndnOGtfigX2ej/QKBgQCb\nZZ2lIV+vXE3Pu/aQveyu27s7sYd+6bit3UmiGZIORaIxiO8ShHAniDVtAEjuMz6Y\n6IrkqLR5SkkqIs8PYeq3yVv3WV8mQiyttm2ZLOtaGnlZCvmULIxCHTF5apZ2ETEd\nTb1qb/BqrppVuAQJBh9/vhL5J3AzxPveEZ8brwJNQQKBgQCMpPYR/sb0Uripz7RI\nwF9z/QK779rw63b7ZE6kpcMW8eRXFrcxn3oRg7Oc+Dshn+aM93U5IrXSB7RP+yVa\n6kZF0GkNO6Zg9w1M1leG3pVb+oFLiJnvu40r/QPr8zesloiRMsiv5N9QNtquAk+T\nR40rZbgc3atdU7JdiEAC0Vd2dg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "david-592@granbluefantasyframedata.iam.gserviceaccount.com",
+  "client_id": "100680657138478714345",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/david-592%40granbluefantasyframedata.iam.gserviceaccount.com"
+}
