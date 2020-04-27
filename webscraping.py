@@ -1,19 +1,21 @@
 '''Viejo, no entiendo una goma'''
 import bs4
 import requests
+import pandas as pd
 
 response = requests.get("https://www.dustloop.com/wiki/index.php?title=GBVS/Gran/Frame_Data")
 
-if response is not None:
-    html = bs4.BeautifulSoup(response.text, 'html.parser')
+soup = bs4.BeautifulSoup(response.text, 'html.parser')
+table = soup.find('table', {'class':'wikitable'}).tbody
 
-    title = html.select("#Health")[0].text
-    paragraphs = html.select("tr")
-    for para in paragraphs:
-        print (para.text)
+rows = table.find_all('tr')
+columns = [v.text.replace('\n', '') for v in rows[0].find_all('th')]
 
-    # just grab the text up to contents as stated in question
-    intro = '\n'.join([ para.text for para in paragraphs[0:5]])
-    print (intro)
+df = pd.DataFrame(columns = columns)
 
-# class wikitable
+for i in range(1, len(rows)):
+    tds = rows[i].find_all('td')
+    values = [td.text.replace('\n', '') for td in tds]
+    df = df.append(pd.Series(values, index = columns), ignore_index = True)
+    print(df)
+
