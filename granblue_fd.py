@@ -1,4 +1,6 @@
 '''Granblue Fantasy Versus: Frame Data'''
+import pandas as pd
+import re
 
 all_characters = [
     'Ferry',
@@ -17,7 +19,8 @@ all_characters = [
     'Charlotta',
     'Lowain',
     'Soriz',
-    'Belial',]
+    #'Belial'
+]
 
 class Character(object):
     # This is the main class for all the characters
@@ -27,7 +30,7 @@ class Character(object):
         self.movelist = {}
 
     # Using this function, you can insert the frame data manually
-    def add_framedata(self, move, damage, guard, startup, active, recovery, on_block, on_hit):
+    def add_framedata(self, move, damage, guard, startup, active, recovery, on_block, on_hit, attribute, level, blockstun, hitstun, untech, hitstop, invul):
         self.move = move
         self.damage = damage
         self.guard = guard
@@ -36,6 +39,13 @@ class Character(object):
         self.recovery = recovery
         self.on_block = on_block
         self.on_hit = on_hit
+        self.attribute = attribute
+        self.level = level
+        self.blockstun = blockstun
+        self.hitstun = hitstun
+        self.untech = untech
+        self.hitstop = hitstop
+        self.invul = invul
         self.movelist[move] = {
             'damage': damage, 
             'guard': guard, 
@@ -43,13 +53,64 @@ class Character(object):
             'active': active, 
             'recovery': recovery, 
             'on block': on_block, 
-            'on hit': on_hit
+            'on hit': on_hit,
+            'attribute': attribute,
+            'level': level,
+            'blockstun': blockstun,
+            'hitstun': hitstun,
+            'untech': untech,
+            'hitstop': hitstop,
+            'invul': invul
             }
 
+    # using this function, you can insert the frame data automatically
+    def add_sheet(self):
+        moves = {}
+        filename = str(self.name) + '_movelist.csv'
+        df = pd.read_csv(filename)
+        for index, row in df.iterrows():
+            moves[row['Version']] = [               ##########################################################
+            f"Damage: {row['Damage']}",             ##########################################################
+            f"Guard: {row['Guard']}",               ##                                                      ##
+            f"Startup: {row['Startup']}",           ##                                                      ##
+            f"Active: {row['Active']}",             ##                                                      ##
+            f"Recovery: {row['Recovery']}",         ##                                                      ##
+            f"On Block: {row['On Block']}",         ##                                                      ##
+            f"On Hit: {row['On Hit']}",             ##  This block can be merged in just one long command   ##
+            f"Attribute: {row['Attribute']}",       ##  line, but I find this way to be easier to read      ##
+            f"Level: {row['Level']}",               ##  and modify.                                         ##
+            f"Blockstun: {row['Blockstun']}",       ##                                                      ## 
+            f"Hitstun: {row['Hitstun']}",           ##                                                      ##
+            f"Untech: {row['Untech']}",             ##                                                      ##
+            f"Hitstop: {row['Hitstop']}",           ##########################################################
+            f"Invul: {row['Invul']}"]               ##########################################################
+        self.movelist = moves
+
+    # Use this to print the entire movelist.
+    def get_movelist(self):
+        for key in self.movelist.keys():
+            print(key, self.movelist[key])
+
+ferry = Character('Ferry')
+lancelot = Character('Lancelot')
+metera = Character('Metera')
 zeta = Character('Zeta')
+beelzebub = Character('Beelzebub')
+djeeta = Character('Djeeta')
+gran = Character('Gran')
+percival = Character('Percival')
+ladiva = Character('Ladiva')
+vaseraga = Character('Vaseraga')
+narmaya = Character('Narmaya')
+zooey = Character('Zooey')
+katalina = Character('Katalina')
+charlotta = Character('Charlotta')
+lowain = Character('Lowain')
+soriz = Character('Soriz') 
 
+fighters = {ferry, lancelot, metera, zeta, beelzebub, djeeta, gran, percival, ladiva, vaseraga, narmaya, zooey, katalina, charlotta, lowain, soriz}
 
+#   Data stored!
+for i in fighters:
+    i.add_sheet()
 
-# gran_movelist = {
-#     'cl_L': {'damage': '400', 'guard': 'mid', 'startup': 5, 'active': 3, 'recovery': 5, 'on block': 3, 'on hit': 7}
-# }
