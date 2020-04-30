@@ -2,26 +2,6 @@
 import pandas as pd
 import re
 
-all_characters = [
-    'Ferry',
-    'Lancelot',
-    'Metera',
-    'Zeta',
-    'Beelzebub',
-    'Djeeta',
-    'Gran',
-    'Percival',
-    'Ladiva',
-    'Vaseraga',
-    'Narmaya',
-    'Zooey',
-    'Katalina',
-    'Charlotta',
-    'Lowain',
-    'Soriz',
-    #'Belial'
-]
-
 class Character(object):
     # This is the main class for all the characters
 
@@ -91,26 +71,14 @@ class Character(object):
         for key in self.movelist.keys():
             print(key, self.movelist[key])
 
-ferry = Character('Ferry')
-lancelot = Character('Lancelot')
-metera = Character('Metera')
-zeta = Character('Zeta')
-beelzebub = Character('Beelzebub')
-djeeta = Character('Djeeta')
-gran = Character('Gran')
-percival = Character('Percival')
-ladiva = Character('Ladiva')
-vaseraga = Character('Vaseraga')
-narmaya = Character('Narmaya')
-zooey = Character('Zooey')
-katalina = Character('Katalina')
-charlotta = Character('Charlotta')
-lowain = Character('Lowain')
-soriz = Character('Soriz') 
+    def get_table(self):
+        filename = str(self.name) + '_movelist.csv'
+        df = pd.read_csv(filename)
+        print(df.iloc[0:])
 
-fighters = {ferry, lancelot, metera, zeta, beelzebub, djeeta, gran, percival, ladiva, vaseraga, narmaya, zooey, katalina, charlotta, lowain, soriz}
+names = {'Ferry', 'Lancelot', 'Metera', 'Zeta', 'Beelzebub', 'Djeeta', 'Gran', 'Percival', 'Ladiva', 'Vaseraga', 'Narmaya', 'Zooey', 'Katalina', 'Charlotta', 'Lowain', 'Soriz'}
+fighters = { n.lower(): Character(n) for n in names }
 
 #   Data stored!
 for i in fighters:
-    i.add_sheet()
-
+    fighters[i].add_sheet()
