@@ -66,15 +66,21 @@ class Character(object):
             f"Invul: {row['Invul']}"]               ##########################################################
         self.movelist = moves
 
-    # Use this to print the entire movelist.
-    def get_movelist(self):
-        for key in self.movelist.keys():
-            print(key, self.movelist[key])
-
-    def get_table(self):
+    # Use this to print the entire movelist. 
+    def get_fulltable(self):
         filename = str(self.name) + '_movelist.csv'
         df = pd.read_csv(filename)
         print(df.iloc[0:])
+
+    # We can obtain specific information for a certain movement. 
+    def get_moveinfo(self):
+        filename = str(self.name) + '_movelist.csv'
+        df = pd.read_csv(filename)
+        print('Which move do you need?')
+        for index, row in df.iterrows():
+            print(index, row['Version'])
+        attack = int(input(''))
+        print(df.iloc[attack])
 
 names = {'Ferry', 'Lancelot', 'Metera', 'Zeta', 'Beelzebub', 'Djeeta', 'Gran', 'Percival', 'Ladiva', 'Vaseraga', 'Narmaya', 'Zooey', 'Katalina', 'Charlotta', 'Lowain', 'Soriz'}
 fighters = { n.lower(): Character(n) for n in names }
@@ -82,3 +88,58 @@ fighters = { n.lower(): Character(n) for n in names }
 #   Data stored!
 for i in fighters:
     fighters[i].add_sheet()
+
+#   Frame data calculator || Please, PLEASE! Try to clean this function
+def frame_advantage():
+    fighter_1 = input('Enter the character that you want to punish: ').lower()     ### 
+    filename = str(fighter_1) + '_movelist.csv'                                      #   Read fighter_1 character's .csv   
+    df = pd.read_csv(filename)                                                     ###
+
+    print('Which move do you need?')
+
+    for index, row in df.iterrows():
+        print(index, row['Version'])
+
+    attack_1 = int(input(''))
+    atk_1 = df.iloc[attack_1][0]
+    attack_1 = df.iloc[attack_1][6]
+    attack_1 = int(attack_1)
+
+    #   
+    if attack_1 >= 1:
+        print(f'This move is {attack_1} on block, therefore you will not be able to punish {fighter_1}')
+    elif attack_1 == 0:
+        print(f'This move is 0 on block, therefore it will not give any advantage neither to you nor your opponent')
+    else:
+
+        fighter_2 = input('Enter the character that will punish: ').lower()     ###
+        filename = str(fighter_2) + '_movelist.csv'                               # Read fighter_2 character's .csv
+        df = pd.read_csv(filename)                                              ###
+
+        punish_dictionary = {}
+        
+        for index, row in df.iterrows():
+            attack_move = row['Version']
+            attack_startup = row['Startup']
+            
+            # Searching for possible moves that can punish fighter_1's move
+            if attack_startup == '-' or attack_startup == 'HKD':                
+                pass
+            elif len(attack_startup) >= 3:
+                pass
+            else:
+                if attack_1 < 0:
+                    attack_1 = attack_1 * -1
+                
+                attack_startup = int(attack_startup)
+
+                if attack_startup < attack_1:           # If there are moves that can punish, they will be stored in this dictionary
+                    punish_dictionary.update({attack_move: attack_startup})
+        
+        if len(punish_dictionary) >= 1:                 # If this dictionary is empty, it means fighter_2 does not have move that can punish fighter_1
+            print(f'This move is {attack_1} on block, therefore {fighter_2.capitalize()} can use the following moves to punish {fighter_1.capitalize()}\'s {atk_1}: \n')
+            for key in sorted(punish_dictionary.keys()):
+                #print(key, punish_dictionary[key])
+                print(f'{key}: {punish_dictionary[key]}')
+        else:
+            print(f'{fighter_2.capitalize()} do not have a movement that can punish {fighter_1.capitalize()}\'s [{atk_1}].')
