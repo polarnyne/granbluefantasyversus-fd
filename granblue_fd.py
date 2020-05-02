@@ -49,22 +49,29 @@ class Character(object):
         filename = str(self.name) + '_movelist.csv'
         df = pd.read_csv(filename)
         for index, row in df.iterrows():
-            moves[row['Version']] = [               ##########################################################
-            f"Damage: {row['Damage']}",             ##########################################################
-            f"Guard: {row['Guard']}",               ##                                                      ##
-            f"Startup: {row['Startup']}",           ##                                                      ##
-            f"Active: {row['Active']}",             ##                                                      ##
-            f"Recovery: {row['Recovery']}",         ##                                                      ##
-            f"On Block: {row['On Block']}",         ##                                                      ##
-            f"On Hit: {row['On Hit']}",             ##  This block can be merged in just one long command   ##
-            f"Attribute: {row['Attribute']}",       ##  line, but I find this way to be easier to read      ##
-            f"Level: {row['Level']}",               ##  and modify.                                         ##
-            f"Blockstun: {row['Blockstun']}",       ##                                                      ## 
-            f"Hitstun: {row['Hitstun']}",           ##                                                      ##
-            f"Untech: {row['Untech']}",             ##                                                      ##
-            f"Hitstop: {row['Hitstop']}",           ##########################################################
-            f"Invul: {row['Invul']}"]               ##########################################################
+            moves[row['Version']] = [               
+            f"Damage: {row['Damage']}",            
+            f"Guard: {row['Guard']}",               
+            f"Startup: {row['Startup']}",           
+            f"Active: {row['Active']}",             
+            f"Recovery: {row['Recovery']}",         
+            f"On Block: {row['On Block']}",         
+            f"On Hit: {row['On Hit']}",             
+            f"Attribute: {row['Attribute']}",       
+            f"Level: {row['Level']}",               
+            f"Blockstun: {row['Blockstun']}",        
+            f"Hitstun: {row['Hitstun']}",           
+            f"Untech: {row['Untech']}",             
+            f"Hitstop: {row['Hitstop']}",           
+            f"Invul: {row['Invul']}"]               
         self.movelist = moves
+
+    # Prints only information regarding to frame data.
+    def get_framedata(self):
+        filename = str(self.name) + '_movelist.csv'
+        df = pd.read_csv(filename)
+        df_animation = df[['Version','Startup','On Block','On Hit']]
+        print(df_animation.to_string(index=False))
 
     # Use this to print the entire movelist. 
     def get_fulltable(self):
@@ -86,10 +93,10 @@ names = {'Ferry', 'Lancelot', 'Metera', 'Zeta', 'Beelzebub', 'Djeeta', 'Gran', '
 fighters = { n.lower(): Character(n) for n in names }
 
 #   Data stored!
-for i in fighters:
-    fighters[i].add_sheet()
+for warrior in fighters:
+    fighters[warrior].add_sheet()
 
-#   Frame data calculator || Please, PLEASE! Try to clean this function
+#   Frame data calculator
 def frame_advantage():
     fighter_1 = input('Enter the character that you want to punish: ').lower()     ### 
     filename = str(fighter_1) + '_movelist.csv'                                      #   Read fighter_1 character's .csv   
@@ -137,9 +144,9 @@ def frame_advantage():
                     punish_dictionary.update({attack_move: attack_startup})
         
         if len(punish_dictionary) >= 1:                 # If this dictionary is empty, it means fighter_2 does not have move that can punish fighter_1
-            print(f'This move is {attack_1} on block, therefore {fighter_2.capitalize()} can use the following moves to punish {fighter_1.capitalize()}\'s {atk_1}: \n')
+            print(f'This move is -{attack_1} on block, therefore {fighter_2.capitalize()} can use the following moves to punish {fighter_1.capitalize()}\'s {atk_1}: \n')
             for key in sorted(punish_dictionary.keys()):
-                #print(key, punish_dictionary[key])
                 print(f'{key}: {punish_dictionary[key]}')
+            
         else:
             print(f'{fighter_2.capitalize()} do not have a movement that can punish {fighter_1.capitalize()}\'s [{atk_1}].')
