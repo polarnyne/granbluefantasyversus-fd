@@ -66,7 +66,7 @@ class Character(object):
             f"Invul: {row['Invul']}"]               
         self.movelist = moves
 
-    # Prints only information regarding to frame data.
+    # Prints only information concerning frame data.
     def get_framedata(self):
         filename = str(self.name) + '_movelist.csv'
         df = pd.read_csv(filename)

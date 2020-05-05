@@ -1,0 +1,166 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+
+<MainWindow>:
+    name:"main"
+    manager: manager
+    GridLayout:
+        size:root.size
+        cols:4
+        spacing:10
+        padding:10
+    
+        Button:
+            text: "Ferry"
+
+        Button:
+            text: "Lancelot"
+
+        Button:
+            text: "Metera"
+
+        Button:
+            text: "Zeta"
+
+        Button:
+            text: "Beelzebub"
+
+        Button:
+            text: "Djeeta"
+
+        Button:
+            text: "Gran"
+
+        Button:
+            text: "Percival"
+
+        Button:
+            text: "Ladiva"
+
+        Button:
+            text: "Vaseraga"
+
+        Button:
+            text: "Narmaya"
+
+        Button:
+            text: "Zooey"
+
+        Button:
+            text: "Katalina"
+
+        Button:
+            text: "Charlotta"
+
+        Button:
+            text: "Lowain"
+
+        Button:
+            text: "Soriz"
+            on_release:
+                app.root.current = "second"
+                #root.manager.transition.direction = "right"
+
+<SecondWindow>:
+    name:"second"
+    
+
+    cols:1
+    Button:
+        text:"Back"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "left"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# <MainWidget>:
+    GridLayout:
+        size:root.size
+        cols:4
+        spacing:10
+        padding:10
+    
+        Button:
+            text: "Ferry"
+
+        Button:
+            text: "Lancelot"
+
+        Button:
+            text: "Metera"
+
+        Button:
+            text: "Zeta"
+
+        Button:
+            text: "Beelzebub"
+
+        Button:
+            text: "Djeeta"
+
+        Button:
+            text: "Gran"
+
+        Button:
+            text: "Percival"
+
+        Button:
+            text: "Ladiva"
+
+        Button:
+            text: "Vaseraga"
+
+        Button:
+            text: "Narmaya"
+
+        Button:
+            text: "Zooey"
+
+        Button:
+            text: "Katalina"
+
+        Button:
+            text: "Charlotta"
+
+        Button:
+            text: "Lowain"
+
+        Button:
+            text: "Soriz"
